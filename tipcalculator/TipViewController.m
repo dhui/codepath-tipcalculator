@@ -22,8 +22,7 @@
 
 @implementation TipViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Tip Calculator";
@@ -31,14 +30,12 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self updateValues];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -56,4 +53,5 @@
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
 }
+
 @end
