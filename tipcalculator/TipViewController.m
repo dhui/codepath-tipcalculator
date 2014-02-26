@@ -7,6 +7,7 @@
 //
 
 #import "TipViewController.h"
+#import "SettingsViewController.h"
 
 @interface TipViewController ()
 
@@ -32,6 +33,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.tipControl.selectedSegmentIndex = [defaults integerForKey:@"defaultTipIndex"];
+
     [self updateValues];
 }
 
@@ -52,6 +59,17 @@
     float totalAmount = tipAmount + billAmount;
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
+}
+
+- (void)onSettingsButton {
+    [self.navigationController pushViewController:[[SettingsViewController alloc] init] animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.tipControl.selectedSegmentIndex = [defaults integerForKey:@"defaultTipIndex"];
+
+   [self updateValues];
 }
 
 @end
